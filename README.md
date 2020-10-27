@@ -24,7 +24,7 @@ composer require rsthn/rose-ext-wind-sendgrid
 
 ### `mail::send` name:string value:string ...
 
-Accepts one or more name:value pairs, the name describes the field to set in the `mail` object of PHPMailer. Currently supported:
+Accepts one or more name:value pairs. Currently supported:
 
 |Name|Type|Description|
 |----|----|-----------|
