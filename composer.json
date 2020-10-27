@@ -1,0 +1,22 @@
+{
+    "name": "rsthn/rose-ext-wind-sendgrid",
+    "description": "SendGrid Adapter for Wind",
+    "version": "1.0.-1",
+    "type": "rose-extension",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Jonathan Palencia",
+            "email": "strikeone88@rsthn.com"
+        }
+    ],
+    "extra": {
+        "rose-ext-identifier": "Wind_SendGrid"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "rsthn/rose-extension-installer": "*",
+        "phpmailer/phpmailer": "^6.1",
+        "sendgrid/sendgrid": "^7.8"
+    }
+}
