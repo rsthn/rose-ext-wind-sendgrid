@@ -24,7 +24,7 @@ composer require rsthn/rose-ext-wind-sendgrid
 
 ### `mail::send` name:string value:string ...
 
-Accepts one or more name:value pairs. Currently supported:
+Sends an email and returns boolean (true) if successfully sent. Error messages are written to the system log. Accepts one or more name:value pairs. Currently supported:
 
 |Name|Type|Description|
 |----|----|-----------|

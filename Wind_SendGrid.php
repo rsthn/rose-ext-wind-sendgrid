@@ -29,7 +29,7 @@ use Rose\Expr;
 if (!Extensions::isInstalled('Wind'))
 	return;
 
-Expr::register('mail::send', function ($args, $parts, $data)
+$sendgrid_sendmail = function ($args, $parts, $data)
 {
 	$mail = new \SendGrid\Mail\Mail();
 	$config = Configuration::getInstance()->Mail;
@@ -78,8 +78,7 @@ Expr::register('mail::send', function ($args, $parts, $data)
 				break;
 
 			case 'BODY':
-				//$mail->addContent("text/html", $args->message);
-				$mail->setHtml($args->get(++$i));
+				$mail->addContent("text/html", $args->get(++$i));
 				break;
 
 			case 'ATTACHMENT':
@@ -119,17 +118,24 @@ Expr::register('mail::send', function ($args, $parts, $data)
 		}
 	}
 
-	$mail->setFrom($from, $fromName)
+	$mail->setFrom($from, $fromName);
 
 	try
 	{
 		$sendgrid = new \SendGrid($config->sendgrid);
 		$response = $sendgrid->send($mail);
-		return 0;
+
+		if ($response->statusCode() != 200 && $response->statusCode() != 201 && $response->statusCode() != 202)
+			throw new \Exception ('(' . $response->statusCode() . ') ' . json_decode($response->body())->errors[0]->message);
+
+		return true;
 	}
-	catch (Exception $e)
+	catch (\Exception $e)
 	{
-		trace('(SendGrid) ' . $e->getMessage());
-		return 1;
+		\Rose\trace('(SendGrid) ' . $e->getMessage());
+		return false;
 	}
-});
+};
+
+Expr::register('mail::send', $sendgrid_sendmail);
+Expr::register('sendgrid::send', $sendgrid_sendmail);
