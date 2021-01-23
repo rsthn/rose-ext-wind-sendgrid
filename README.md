@@ -23,6 +23,7 @@ composer require rsthn/rose-ext-wind-sendgrid
 ## Expression Functions
 
 ### `mail::send` name:string value:string ...
+### `sendgrid::send` name:string value:string ...
 
 Sends an email and returns boolean (true) if successfully sent. Error messages are written to the system log. Accepts one or more name:value pairs. Currently supported:
 
@@ -37,6 +38,7 @@ Sends an email and returns boolean (true) if successfully sent. Error messages a
 |ATTACHMENT|`string`|Adds the specified file (path) as an attachment.
 |ATTACHMENT|`map { name, data }`|Adds an attachment from a given data string.
 |ATTACHMENT|`map { name, path }`|Adds an attachment from a given path.
+|ATTACHMENT|`array`|Adds one or more attachments (each of which can be any of the previous forms).
 
 Example:
 

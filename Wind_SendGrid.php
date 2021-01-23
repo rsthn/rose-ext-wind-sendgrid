@@ -84,34 +84,72 @@ $sendgrid_sendmail = function ($args, $parts, $data)
 			case 'ATTACHMENT':
 				$value = $args->get(++$i);
 
-				if (\Rose\typeOf($value) == 'Rose\\Map')
+				if (\Rose\typeOf($value) == 'Rose\\Arry')
 				{
-					if ($value->has('data'))
+					foreach ($value->__nativeArray as $value)
 					{
-						$attachment = new \SendGrid\Mail\Attachment();
-						$attachment->setContent($value->data);
-						//$attachment->setType(...);
-						$attachment->setFilename($value->name);
-						$attachment->setDisposition("attachment");
-						$mail->addAttachment($attachment);
-					}
-					else if ($value->has('path'))
-					{
-						$attachment = new \SendGrid\Mail\Attachment();
-						$attachment->setContent(file_get_contents($value->path));
-						//$attachment->setType(...);
-						$attachment->setFilename($value->name);
-						$attachment->setDisposition("attachment");
-						$mail->addAttachment($attachment);
+						if (\Rose\typeOf($value) == 'Rose\\Map')
+						{
+							if ($value->has('data'))
+							{
+								$attachment = new \SendGrid\Mail\Attachment();
+								$attachment->setContent($value->data);
+								//$attachment->setType(...);
+								$attachment->setFilename($value->name);
+								$attachment->setDisposition("attachment");
+								$mail->addAttachment($attachment);
+							}
+							else if ($value->has('path'))
+							{
+								$attachment = new \SendGrid\Mail\Attachment();
+								$attachment->setContent(file_get_contents($value->path));
+								//$attachment->setType(...);
+								$attachment->setFilename($value->name);
+								$attachment->setDisposition("attachment");
+								$mail->addAttachment($attachment);
+							}
+						}
+						else
+						{
+							$attachment = new \SendGrid\Mail\Attachment();
+							$attachment->setContent(file_get_contents($value));
+							$attachment->setFilename(basename($value));
+							$attachment->setDisposition("attachment");
+							$mail->addAttachment($attachment);
+						}
 					}
 				}
 				else
 				{
-					$attachment = new \SendGrid\Mail\Attachment();
-					$attachment->setContent(file_get_contents($value));
-					$attachment->setFilename(basename($value));
-					$attachment->setDisposition("attachment");
-					$mail->addAttachment($attachment);
+					if (\Rose\typeOf($value) == 'Rose\\Map')
+					{
+						if ($value->has('data'))
+						{
+							$attachment = new \SendGrid\Mail\Attachment();
+							$attachment->setContent($value->data);
+							//$attachment->setType(...);
+							$attachment->setFilename($value->name);
+							$attachment->setDisposition("attachment");
+							$mail->addAttachment($attachment);
+						}
+						else if ($value->has('path'))
+						{
+							$attachment = new \SendGrid\Mail\Attachment();
+							$attachment->setContent(file_get_contents($value->path));
+							//$attachment->setType(...);
+							$attachment->setFilename($value->name);
+							$attachment->setDisposition("attachment");
+							$mail->addAttachment($attachment);
+						}
+					}
+					else
+					{
+						$attachment = new \SendGrid\Mail\Attachment();
+						$attachment->setContent(file_get_contents($value));
+						$attachment->setFilename(basename($value));
+						$attachment->setDisposition("attachment");
+						$mail->addAttachment($attachment);
+					}
 				}
 
 				break;
