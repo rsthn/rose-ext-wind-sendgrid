@@ -1,7 +1,7 @@
 {
     "name": "rsthn/rose-ext-wind-sendgrid",
     "description": "SendGrid Adapter for Wind",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "type": "rose-extension",
     "license": "Apache-2.0",
     "authors": [

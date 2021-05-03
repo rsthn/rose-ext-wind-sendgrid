@@ -34,8 +34,12 @@ $sendgrid_sendmail = function ($args, $parts, $data)
 	$mail = new \SendGrid\Mail\Mail();
 	$config = Configuration::getInstance()->Mail;
 
+	$debug = $config->debug == 'true';
+	$tag = rand(0,1000).': ';
+
 	$from = $config->from;
 	$fromName = $config->fromName;
+	$replyTo = $config->replyTo;
 
 	for ($i = 1; $i < $args->length; $i++)
 	{
@@ -43,6 +47,7 @@ $sendgrid_sendmail = function ($args, $parts, $data)
 		{
 			case 'RCPT': case 'TO':
 				$value = $args->get(++$i);
+				if ($debug) \Rose\trace($tag.'RCPT '.$value);
 
 				if (\Rose\typeOf($value) == 'Rose\\Arry')
 				{
@@ -57,28 +62,45 @@ $sendgrid_sendmail = function ($args, $parts, $data)
 
 			case 'CC':
 				$tmp = trim($args->get(++$i));
-				if ($tmp) $mail->addTo($tmp);
+				if ($tmp) {
+					if ($debug) \Rose\trace($tag.'CC '.$tmp);
+					$mail->addTo($tmp);
+				}
 				break;
 
 			case 'BCC':
 				$tmp = trim($args->get(++$i));
-				if ($tmp) $mail->addBcc($tmp);
+				if ($tmp) {
+					if ($debug) \Rose\trace($tag.'BCC '.$tmp);
+					$mail->addBcc($tmp);
+				}
 				break;
-	
+
 			case 'FROM':
 				$from = $args->get(++$i);
+				if ($debug) \Rose\trace($tag.'FROM '.$from);
 				break;
 
 			case 'FROM-NAME':
 				$fromName = $args->get(++$i);
+				if ($debug) \Rose\trace($tag.'FROM-NAME '.$fromName);
+				break;
+
+			case 'REPLY-TO':
+				$replyTo = $args->get(++$i);
+				if ($debug) \Rose\trace($tag.'REPLY-TO '.$replyTo);
 				break;
 
 			case 'SUBJECT':
-				$mail->setSubject ($args->get(++$i));
+				$tmp = $args->get(++$i);
+				$mail->setSubject ($tmp);
+				if ($debug) \Rose\trace($tag.'SUBJECT '.$tmp);
 				break;
 
 			case 'BODY':
-				$mail->addContent("text/html", $args->get(++$i));
+				$tmp = $args->get(++$i);
+				$mail->addContent("text/html", $tmp);
+				if ($debug) \Rose\trace($tag." BODY >>>\n".$tmp."\n<<<");
 				break;
 
 			case 'ATTACHMENT':
@@ -159,7 +181,12 @@ $sendgrid_sendmail = function ($args, $parts, $data)
 		}
 	}
 
+	if ($debug) return true;
+
 	$mail->setFrom($from, $fromName);
+
+	if ($replyTo)
+		$mail->setReplyTo($replyTo);
 
 	try
 	{
