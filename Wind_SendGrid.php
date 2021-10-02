@@ -52,11 +52,14 @@ $sendgrid_sendmail = function ($args, $parts, $data)
 				if (\Rose\typeOf($value) == 'Rose\\Arry')
 				{
 					$value->forEach(function($value) use(&$mail) {
-						$mail->addTo($value);
+						$value = trim($value);
+						if ($value) $mail->addTo($value);
 					});
 				}
-				else
-					$mail->addTo($value);
+				else {
+					$value = trim($value);
+					if ($value) $mail->addTo($value);
+				}
 
 				break;
 
