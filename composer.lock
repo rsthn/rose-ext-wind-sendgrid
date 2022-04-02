@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "531e37d4b0ff17e7527ea4f84dbffe59",
+    "content-hash": "2c642151f3326a8ea3d532aa70280ac3",
     "packages": [
         {
             "name": "rsthn/rose-extension-installer",
-            "version": "1.0.6",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rsthn/rose-extension-installer.git",
-                "reference": "9746e58d389064dc9e556ef7abe742f2f52bc556"
+                "reference": "2d90c13cf506ccb8772432bbda9fe0e82bb9957f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rsthn/rose-extension-installer/zipball/9746e58d389064dc9e556ef7abe742f2f52bc556",
-                "reference": "9746e58d389064dc9e556ef7abe742f2f52bc556",
+                "url": "https://api.github.com/repos/rsthn/rose-extension-installer/zipball/2d90c13cf506ccb8772432bbda9fe0e82bb9957f",
+                "reference": "2d90c13cf506ccb8772432bbda9fe0e82bb9957f",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0"
+                "composer-plugin-api": "^2.0"
             },
             "require-dev": {
                 "composer/composer": "^1.3"
@@ -48,20 +48,24 @@
             ],
             "description": "Rose Framework - Extension Installer",
             "homepage": "https://github.com/rsthn/rose-extension-installer",
-            "time": "2020-05-29T05:53:49+00:00"
+            "support": {
+                "issues": "https://github.com/rsthn/rose-extension-installer/issues",
+                "source": "https://github.com/rsthn/rose-extension-installer/tree/v1.0.11"
+            },
+            "time": "2022-01-18T08:04:40+00:00"
         },
         {
             "name": "sendgrid/php-http-client",
-            "version": "3.12.0",
+            "version": "3.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sendgrid/php-http-client.git",
-                "reference": "22a3dc4dac617046004bbad2d329c0e0d9be7daf"
+                "reference": "6d589564522be290c7d7c18e51bcd8b03aeaf0b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/22a3dc4dac617046004bbad2d329c0e0d9be7daf",
-                "reference": "22a3dc4dac617046004bbad2d329c0e0d9be7daf",
+                "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/6d589564522be290c7d7c18e51bcd8b03aeaf0b6",
+                "reference": "6d589564522be290c7d7c18e51bcd8b03aeaf0b6",
                 "shasum": ""
             },
             "require": {
@@ -108,20 +112,24 @@
                 "rest",
                 "sendgrid"
             ],
-            "time": "2020-10-14T20:09:07+00:00"
+            "support": {
+                "issues": "https://github.com/sendgrid/php-http-client/issues",
+                "source": "https://github.com/sendgrid/php-http-client/tree/3.14.4"
+            },
+            "time": "2022-03-09T20:21:55+00:00"
         },
         {
             "name": "sendgrid/sendgrid",
-            "version": "7.8.5",
+            "version": "7.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sendgrid/sendgrid-php.git",
-                "reference": "a4537666f29cf51c511ee896f4425764c74d8a63"
+                "reference": "1d2fd3b72687fe82264853a8888b014f8f99e81f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/a4537666f29cf51c511ee896f4425764c74d8a63",
-                "reference": "a4537666f29cf51c511ee896f4425764c74d8a63",
+                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/1d2fd3b72687fe82264853a8888b014f8f99e81f",
+                "reference": "1d2fd3b72687fe82264853a8888b014f8f99e81f",
                 "shasum": ""
             },
             "require": {
@@ -144,11 +152,11 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "SendGrid\\Contacts\\": "lib/contacts/",
-                    "SendGrid\\EventWebhook\\": "lib/eventwebhook/",
-                    "SendGrid\\Helper\\": "lib/helper/",
                     "SendGrid\\Mail\\": "lib/mail/",
-                    "SendGrid\\Stats\\": "lib/stats/"
+                    "SendGrid\\Stats\\": "lib/stats/",
+                    "SendGrid\\Helper\\": "lib/helper/",
+                    "SendGrid\\Contacts\\": "lib/contacts/",
+                    "SendGrid\\EventWebhook\\": "lib/eventwebhook/"
                 },
                 "classmap": [
                     "lib/BaseSendGridClientInterface.php",
@@ -169,20 +177,24 @@
                 "sendgrid",
                 "twilio sendgrid"
             ],
-            "time": "2020-10-14T19:26:13+00:00"
+            "support": {
+                "issues": "https://github.com/sendgrid/sendgrid-php/issues",
+                "source": "https://github.com/sendgrid/sendgrid-php/tree/7.11.5"
+            },
+            "time": "2022-03-09T20:21:56+00:00"
         },
         {
             "name": "starkbank/ecdsa",
-            "version": "0.0.4",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/starkbank/ecdsa-php.git",
-                "reference": "9369d35ed9019321adb4eb9fd3be21357d527c74"
+                "reference": "484bedac47bac4012dc73df91da221f0a66845cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/starkbank/ecdsa-php/zipball/9369d35ed9019321adb4eb9fd3be21357d527c74",
-                "reference": "9369d35ed9019321adb4eb9fd3be21357d527c74",
+                "url": "https://api.github.com/repos/starkbank/ecdsa-php/zipball/484bedac47bac4012dc73df91da221f0a66845cb",
+                "reference": "484bedac47bac4012dc73df91da221f0a66845cb",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +220,11 @@
             ],
             "description": "fast openSSL-compatible implementation of the Elliptic Curve Digital Signature Algorithm (ECDSA)",
             "homepage": "https://github.com/starkbank/ecdsa-php",
-            "time": "2020-05-15T15:46:20+00:00"
+            "support": {
+                "issues": "https://github.com/starkbank/ecdsa-php/issues",
+                "source": "https://github.com/starkbank/ecdsa-php/tree/v0.0.5"
+            },
+            "time": "2021-06-06T22:24:49+00:00"
         }
     ],
     "packages-dev": [],
@@ -219,5 +235,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.2.0"
 }

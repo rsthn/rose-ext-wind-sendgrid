@@ -17,5 +17,10 @@
     "require": {
         "rsthn/rose-extension-installer": "*",
         "sendgrid/sendgrid": "^7.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "rsthn/rose-extension-installer": true
+        }
     }
 }

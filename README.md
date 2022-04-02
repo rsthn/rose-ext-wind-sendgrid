@@ -17,7 +17,7 @@ composer require rsthn/rose-ext-wind-sendgrid
 |----|----|-----------|-------|
 |sendgrid|`string`|SendGrid API Key.|Required
 |from|`string`|Email address of the sender.|Required
-|fromName|`string`|Name of the sender.|Blank
+|fromName|`string`|Name of the sender.|Optional
 
 
 ## Expression Functions
